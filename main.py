@@ -1,18 +1,20 @@
 import threading
 import time
 
-import pyautogui
 from pynput import keyboard
+from pynput.mouse import Controller, Button
+
+mouse = Controller()
 
 delay = float(input("Delay (secs): "))
 mouse_btn = input("Mouse button l - left, r - right: ")
 match mouse_btn:
 	case "l":
-		mouse_btn = "left"
+		mouse_btn = Button.left
 	case "r":
-		mouse_btn = "right"
+		mouse_btn = Button.right
 	case _:
-		mouse_btn = "left"
+		mouse_btn = Button.left
 
 clicking = False
 
@@ -24,12 +26,10 @@ def click_loop():
 	global clicking
 	while True:
 		if clicking:
-			pyautogui.mouseDown(button="right")
-			time.sleep(0.01)
-			pyautogui.mouseUp(button="right")
+			mouse.click(mouse_btn, 1)
 			time.sleep(delay)
 		else:
-			time.sleep(0.01)
+			time.sleep(0.1)
 
 
 def on_press(key, injected):
