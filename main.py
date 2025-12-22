@@ -7,7 +7,7 @@ from pynput.mouse import Controller, Button
 mouse = Controller()
 
 delay = float(input("Delay (secs): "))
-mouse_btn = input("Mouse button l - left, r - right: ")
+mouse_btn = input("Mouse button l - left, r - right: ").lower()
 match mouse_btn:
 	case "l":
 		mouse_btn = Button.left
