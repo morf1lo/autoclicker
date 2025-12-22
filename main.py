@@ -6,7 +6,7 @@ from pynput.mouse import Controller, Button
 
 mouse = Controller()
 
-delay = float(input("Delay (secs): "))
+interval = float(input("Interval (secs): "))
 mouse_btn = input("Mouse button l - left, r - right: ").lower()
 match mouse_btn:
 	case "l":
@@ -27,9 +27,9 @@ def click_loop():
 	while True:
 		if clicking:
 			mouse.click(mouse_btn, 1)
-			time.sleep(delay)
+			time.sleep(interval)
 		else:
-			time.sleep(0.1)
+			time.sleep(0.5)
 
 
 def on_press(key, injected):
